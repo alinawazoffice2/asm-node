@@ -1,0 +1,23 @@
+
+inc math
+
+def proc main 
+	mov ax 4
+	mov bx 6
+	lbl start
+	inp ax
+	inp bx
+	add ax bx dx
+	out dx
+	call test
+	goto start
+end proc
+
+
+def proc test
+	call mulit
+	mov ax 3
+	mov bx 5
+	call avg2
+end proc
+	
