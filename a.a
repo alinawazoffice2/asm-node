@@ -1,0 +1,7 @@
+inc b
+
+def proc outA
+    mov dx A
+    out dx
+    call outB
+end proc
