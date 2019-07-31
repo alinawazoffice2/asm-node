@@ -1,0 +1,56 @@
+inc a
+
+def proc main
+	mov dx db:name=test
+	pts dx
+	mov dx data=abc
+	pts dx
+	mov dx data=xyz
+	pts dx
+	stf test.db
+end def
+
+def proc main_bk 
+	call outA
+	mov dx Welcome$sto$sapplication
+	out dx
+	lbl start
+	mov dx ===MENU===
+	out dx
+	mov dx $e
+	mov dx 1.$sGDP
+	out dx
+	mov dx $e
+	mov dx 2.$sExit
+	out dx
+	mov dx $e
+	mov dx Choose>
+	out dx
+	inp ax
+	cmp ax 1 gdp
+	cmp ax 2 exit
+	lbl gdp
+	call gdpProc
+	goto start
+	lbl exit
+	mov dx $e
+	mov dx Bye!
+	out dx
+end proc
+
+
+def proc gdpProc
+	mov dx Exports:
+	out dx
+	inp ax
+	mov dx Imports:
+	out dx
+	inp bx
+	sub ax bx cx
+	div cx 100000 cx
+	mov dx $e
+	map dx GDP=
+	map dx cx
+	out dx
+end proc
+	

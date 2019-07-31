@@ -1,46 +1,15 @@
-inc a
-
-def proc main 
-	call outA
-	mov dx Welcome$sto$sapplication
-	out dx
-	lbl start
-	mov dx ===MENU===
-	out dx
-	mov dx $e
-	mov dx 1.$sGDP
-	out dx
-	mov dx $e
-	mov dx 2.$sExit
-	out dx
-	mov dx $e
-	mov dx Choose>
-	out dx
-	inp ax
-	cmp ax 1 gdp
-	cmp ax 2 exit
-	lbl gdp
-	call gdpProc
-	goto start
-	lbl exit
-	mov dx $e
-	mov dx Bye!
-	out dx
+def proc main
+    mov dx name=test
+	pts dx
+	mov dx table=abc
+	pts dx
+	mov dx data=123
+	pts dx
+	stf test.ad    
+    pfs dx
+    pfs dx
+    pfs dx
+    mov dx data=456
+    pts dx
+    stfp test.ad
 end proc
-
-
-def proc gdpProc
-	mov dx Exports:
-	out dx
-	inp ax
-	mov dx Imports:
-	out dx
-	inp bx
-	sub ax bx cx
-	div cx 100000 cx
-	mov dx $e
-	map dx GDP=
-	map dx cx
-	out dx
-end proc
-	
